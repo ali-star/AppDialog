@@ -8,7 +8,7 @@ class VerticalStackDialog extends StatelessWidget {
   final Widget header;
   final Widget body;
   final bool isDense;
-  final AlignmentGeometry aligment;
+  final AlignmentGeometry alignment;
   final EdgeInsetsGeometry padding;
   final bool keyboardAware;
   final double width;
@@ -17,6 +17,8 @@ class VerticalStackDialog extends StatelessWidget {
   final Widget closeIcon;
   final Color dialogBackgroundColor;
   final BorderSide borderSide;
+  final bool noVerticalMargin;
+  final BorderRadius backgroundBorderRadius;
 
   const VerticalStackDialog({
     Key key,
@@ -25,7 +27,7 @@ class VerticalStackDialog extends StatelessWidget {
     this.btnOk,
     this.btnCancel,
     this.body,
-    this.aligment,
+    this.alignment,
     this.isDense,
     @required this.header,
     this.padding,
@@ -36,12 +38,14 @@ class VerticalStackDialog extends StatelessWidget {
     this.closeIcon,
     this.dialogBackgroundColor,
     this.borderSide,
+    this.noVerticalMargin = false,
+    this.backgroundBorderRadius
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: aligment,
+      alignment: alignment,
       padding: EdgeInsets.only(
           bottom: keyboardAware ? MediaQuery.of(context).viewInsets.bottom : 0),
       child: Stack(
@@ -55,7 +59,7 @@ class VerticalStackDialog extends StatelessWidget {
                     top: 65.0, left: 40.0, right: 40.0, bottom: 10.0),
             child: Material(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: backgroundBorderRadius ?? BorderRadius.circular(10.0),
                 side: borderSide ?? BorderSide.none,
               ),
               elevation: 0.5,
@@ -68,7 +72,7 @@ class VerticalStackDialog extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       SizedBox(
-                        height: header != null ? 50.0 : 15,
+                        height: header != null ? 50.0 : noVerticalMargin ? 0.0 : 15,
                       ),
                       body ??
                           Column(
@@ -95,7 +99,7 @@ class VerticalStackDialog extends StatelessWidget {
                             ],
                           ),
                       SizedBox(
-                        height: 16.0,
+                        height: noVerticalMargin ? 0 : 16.0,
                       ),
                       if (btnOk != null || btnCancel != null)
                         Container(

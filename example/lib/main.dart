@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                       width: 280,
                       buttonsBorderRadius: BorderRadius.all(Radius.circular(2)),
                       headerAnimationLoop: false,
-                      animType: AnimType.BOTTOMSLIDE,
+                      animType: AnimType.BOTTOM_SLIDE,
                       title: 'INFO',
                       desc: 'Dialog description here...',
                       showCloseIcon: true,
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                       context: context,
                       dialogType: DialogType.QUESTION,
                       headerAnimationLoop: false,
-                      animType: AnimType.BOTTOMSLIDE,
+                      animType: AnimType.BOTTOM_SLIDE,
                       title: 'Question',
                       desc: 'Dialog description here...',
                       buttonsTextStyle: TextStyle(color: Colors.black),
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                     AwesomeDialog(
                       context: context,
                       headerAnimationLoop: true,
-                      animType: AnimType.BOTTOMSLIDE,
+                      animType: AnimType.BOTTOM_SLIDE,
                       title: 'INFO',
                       desc:
                           'Lorem ipsum dolor sit amet consectetur adipiscing elit eget ornare tempus, vestibulum sagittis rhoncus felis hendrerit lectus ultricies duis vel, id morbi cum ultrices tellus metus dis ut donec. Ut sagittis viverra venenatis eget euismod faucibus odio ligula phasellus,',
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                         context: context,
                         dialogType: DialogType.WARNING,
                         headerAnimationLoop: false,
-                        animType: AnimType.TOPSLIDE,
+                        animType: AnimType.TOP_SLIDE,
                         showCloseIcon: true,
                         closeIcon: Icon(Icons.close_fullscreen_outlined),
                         title: 'Warning',
@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                     AwesomeDialog(
                         context: context,
                         dialogType: DialogType.ERROR,
-                        animType: AnimType.RIGHSLIDE,
+                        animType: AnimType.RIGHT_SLIDE,
                         headerAnimationLoop: false,
                         title: 'Error',
                         desc:
@@ -145,9 +145,9 @@ class _HomePageState extends State<HomePage> {
                   pressEvent: () {
                     AwesomeDialog(
                         context: context,
-                        animType: AnimType.LEFTSLIDE,
+                        animType: AnimType.LEFT_SLIDE,
                         headerAnimationLoop: false,
-                        dialogType: DialogType.SUCCES,
+                        dialogType: DialogType.SUCCESS,
                         title: 'Succes',
                         desc:
                             'Dialog description here..................................................',
@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                           debugPrint('OnClcik');
                         },
                         btnOkIcon: Icons.check_circle,
-                        onDissmissCallback: () {
+                        onDismissCallback: () {
                           debugPrint('Dialog Dissmiss from callback');
                         })
                       ..show();
@@ -176,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                       desc:
                           'Dialog description here..................................................',
                       btnOkOnPress: () {
-                        debugPrint('OnClcik');
+                        debugPrint('OnClick');
                       },
                       btnOkIcon: Icons.check_circle,
                     )..show();
@@ -201,6 +201,53 @@ class _HomePageState extends State<HomePage> {
                       ),
                       title: 'This is Ignored',
                       desc: 'This is also Ignored',
+                    )..show();
+                  },
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                AnimatedButton(
+                  text: 'No Vertical Margin Dialog',
+                  color: Colors.blue,
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      animType: AnimType.SMOOTH_SCALE,
+                      animDuration: Duration(milliseconds: 270),
+                      dialogType: DialogType.NO_HEADER,
+                      body: Container(
+                        height: 120.0,
+                        child: Column(
+                          children: [
+                            Container(width: 20.0, height: 2.0, color: Colors.white),
+                            Spacer(),
+                            Row(
+                              children: [
+                                Container(width: 2.0, height: 20.0, color: Colors.white),
+                                Spacer(),
+                                Container(
+                                  width: 300.0,
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'The body takes all of the dialog space',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontStyle: FontStyle.italic),
+                                  ),
+                                ),
+                                Spacer(),
+                                Container(width: 2.0, height: 20.0, color: Colors.white),
+                              ],
+                            ),
+                            Spacer(),
+                            Container(width: 20.0, height: 2.0, color: Colors.white),
+                          ],
+                        ),
+                      ),
+                      title: 'This is Ignored',
+                      desc: 'This is also Ignored',
+                      noVerticalMargin: true,
+                      padding: EdgeInsets.zero,
                     )..show();
                   },
                 ),
@@ -233,7 +280,7 @@ class _HomePageState extends State<HomePage> {
                       keyboardAware: true,
                       dismissOnBackKeyPress: false,
                       dialogType: DialogType.WARNING,
-                      animType: AnimType.BOTTOMSLIDE,
+                      animType: AnimType.BOTTOM_SLIDE,
                       btnCancelText: "Cancel Order",
                       btnOkText: "Yes, I will pay",
                       title: 'Continue to pay?',
@@ -307,7 +354,7 @@ class _HomePageState extends State<HomePage> {
                             AnimatedButton(
                                 text: 'Close',
                                 pressEvent: () {
-                                  dialog.dissmiss();
+                                  dialog.dismiss();
                                 })
                           ],
                         ),

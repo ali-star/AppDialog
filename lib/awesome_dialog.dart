@@ -1,23 +1,32 @@
 library awesome_dialog;
 
-import 'src/anims/anims.dart';
-import 'src/animated_button.dart';
-import 'src/anims/flare_header.dart';
-import 'src/vertical_stack_header_dialog.dart';
 import 'package:flutter/material.dart';
 
-export 'src/animated_button.dart';
-export 'src/anims/flare_header.dart';
-export 'src/anims/anims.dart';
+import 'src/animated_button.dart';
+import 'src/anims/anims.dart';
+import 'src/anims/flare_header.dart';
+import 'src/vertical_stack_header_dialog.dart';
 
-enum DialogType { INFO, WARNING, ERROR, SUCCES, QUESTION, NO_HEADER }
-enum AnimType { SCALE, LEFTSLIDE, RIGHSLIDE, BOTTOMSLIDE, TOPSLIDE }
+export 'src/animated_button.dart';
+export 'src/anims/anims.dart';
+export 'src/anims/flare_header.dart';
+
+enum DialogType { INFO, WARNING, ERROR, SUCCESS, QUESTION, NO_HEADER }
+enum AnimType {
+  SCALE,
+  LEFT_SLIDE,
+  RIGHT_SLIDE,
+  BOTTOM_SLIDE,
+  TOP_SLIDE,
+  FADE,
+  SMOOTH_SCALE
+}
 
 class AwesomeDialog {
   /// [@required]
   final BuildContext context;
 
-  /// Dialog Type can be INFO, WARNING, ERROR, SUCCES, NO_HEADER
+  /// Dialog Type can be INFO, WARNING, ERROR, SUCCESS, NO_HEADER
   final DialogType dialogType;
 
   /// Widget with priority over DialogType, for a custom header widget
@@ -50,37 +59,37 @@ class AwesomeDialog {
   /// Custom Btn Cancel
   final Widget btnCancel;
 
-  /// Barrier Dissmisable
+  /// Barrier Dismissible
   final bool dismissOnTouchOutside;
 
-  /// Callback to execute after dialog get dissmised
-  final Function onDissmissCallback;
+  /// Callback to execute after dialog get dismissed
+  final Function onDismissCallback;
 
-  /// Anim Type can be { SCALE, LEFTSLIDE, RIGHSLIDE, BOTTOMSLIDE, TOPSLIDE }
+  /// Anim Type can be { SCALE, LEFT_SLIDE, RIGHT_SLIDE, BOTTOM_SLIDE, TOP_SLIDE, SMOOTH_SCALE }
   final AnimType animType;
 
-  /// Aligment of the Dialog
-  final AlignmentGeometry aligment;
+  /// Alignment of the Dialog
+  final AlignmentGeometry alignment;
 
   /// Padding off inner content of Dialog
   final EdgeInsetsGeometry padding;
 
-  /// This Prop is usefull to Take advantage of screen dimensions
+  /// This Prop is useful to Take advantage of screen dimensions
   final bool isDense;
 
   /// Whenever the animation Header loops or not.
   final bool headerAnimationLoop;
 
-  /// To use the Rootnavigator
+  /// To use the RootNavigator
   final bool useRootNavigator;
 
-  /// For Autho Hide Dialog after some Duration.
+  /// For Auto Hide Dialog after some Duration.
   final Duration autoHide;
 
   ///Control if add or not the Padding EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom).
   final bool keyboardAware;
 
-  ///Control if Dialog is dissmis by back key.
+  ///Control if Dialog is dismiss by back key.
   final bool dismissOnBackKeyPress;
 
   ///Max with of entire Dialog.
@@ -104,80 +113,117 @@ class AwesomeDialog {
   /// Set BorderSide of DialogShape
   final BorderSide borderSide;
 
-  AwesomeDialog({
-    @required this.context,
-    this.dialogType = DialogType.INFO,
-    this.customHeader,
-    this.title,
-    this.desc,
-    this.body,
-    this.btnOk,
-    this.btnCancel,
-    this.btnOkText,
-    this.btnOkIcon,
-    this.btnOkOnPress,
-    this.btnOkColor,
-    this.btnCancelText,
-    this.btnCancelIcon,
-    this.btnCancelOnPress,
-    this.btnCancelColor,
-    this.onDissmissCallback,
-    this.isDense = false,
-    this.dismissOnTouchOutside = true,
-    this.headerAnimationLoop = true,
-    this.aligment = Alignment.center,
-    this.animType = AnimType.SCALE,
-    this.padding,
-    this.useRootNavigator = false,
-    this.autoHide,
-    this.keyboardAware = true,
-    this.dismissOnBackKeyPress = true,
-    this.width,
-    this.buttonsBorderRadius,
-    this.showCloseIcon = false,
-    this.closeIcon,
-    this.dialogBackgroundColor,
-    this.borderSide,
-    this.buttonsTextStyle,
-  }) : assert(
+  /// Set zero margin of dialog if true
+  final bool noVerticalMargin;
+
+  /// Changes the BorderRadius of the dialog background
+  final BorderRadius backgroundBorderRadius;
+
+  /// Custom duration for dialog animation
+  final Duration animDuration;
+
+  AwesomeDialog(
+      {@required this.context,
+      this.dialogType = DialogType.INFO,
+      this.customHeader,
+      this.title,
+      this.desc,
+      this.body,
+      this.btnOk,
+      this.btnCancel,
+      this.btnOkText,
+      this.btnOkIcon,
+      this.btnOkOnPress,
+      this.btnOkColor,
+      this.btnCancelText,
+      this.btnCancelIcon,
+      this.btnCancelOnPress,
+      this.btnCancelColor,
+      this.onDismissCallback,
+      this.isDense = false,
+      this.dismissOnTouchOutside = true,
+      this.headerAnimationLoop = true,
+      this.alignment = Alignment.center,
+      this.animType = AnimType.SCALE,
+      this.animDuration,
+      this.padding,
+      this.useRootNavigator = false,
+      this.autoHide,
+      this.keyboardAware = true,
+      this.dismissOnBackKeyPress = true,
+      this.width,
+      this.buttonsBorderRadius,
+      this.showCloseIcon = false,
+      this.closeIcon,
+      this.dialogBackgroundColor,
+      this.backgroundBorderRadius,
+      this.borderSide,
+      this.buttonsTextStyle,
+      this.noVerticalMargin = false})
+      : assert(
           context != null,
         );
 
-  bool isDissmisedBySystem = false;
+  bool isDismissedBySystem = false;
 
   Future show() => showDialog(
           context: this.context,
           barrierDismissible: dismissOnTouchOutside,
           builder: (BuildContext context) {
             if (autoHide != null) {
-              Future.delayed(autoHide).then((value) => dissmiss());
+              Future.delayed(autoHide).then((value) => dismiss());
             }
             switch (animType) {
               case AnimType.SCALE:
                 return ScaleFade(
-                    scale: 0.1,
+                  scale: 0.1,
+                  fade: true,
+                  curve: Curves.fastLinearToSlowEaseIn,
+                  child: _buildDialog,
+                  duration: animDuration,
+                );
+                break;
+              case AnimType.LEFT_SLIDE:
+                return FadeIn(
+                    from: SlideFrom.LEFT,
+                    child: _buildDialog,
+                    duration: animDuration);
+                break;
+              case AnimType.RIGHT_SLIDE:
+                return FadeIn(
+                    from: SlideFrom.RIGHT,
+                    child: _buildDialog,
+                    duration: animDuration);
+                break;
+              case AnimType.BOTTOM_SLIDE:
+                return FadeIn(
+                    from: SlideFrom.BOTTOM,
+                    child: _buildDialog,
+                    duration: animDuration);
+                break;
+              case AnimType.TOP_SLIDE:
+                return FadeIn(
+                    from: SlideFrom.TOP,
+                    child: _buildDialog,
+                    duration: animDuration);
+                break;
+              case AnimType.FADE:
+                return FadeIn(child: _buildDialog, duration: animDuration);
+                break;
+              case AnimType.SMOOTH_SCALE:
+                return ScaleFade(
+                    scale: 0.8,
                     fade: true,
-                    curve: Curves.fastLinearToSlowEaseIn,
-                    child: _buildDialog);
-                break;
-              case AnimType.LEFTSLIDE:
-                return FadeIn(from: SlideFrom.LEFT, child: _buildDialog);
-                break;
-              case AnimType.RIGHSLIDE:
-                return FadeIn(from: SlideFrom.RIGHT, child: _buildDialog);
-                break;
-              case AnimType.BOTTOMSLIDE:
-                return FadeIn(from: SlideFrom.BOTTOM, child: _buildDialog);
-                break;
-              case AnimType.TOPSLIDE:
-                return FadeIn(from: SlideFrom.TOP, child: _buildDialog);
+                    curve: Curves.easeOutCirc,
+                    child: _buildDialog,
+                    duration: animDuration);
                 break;
               default:
                 return _buildDialog;
             }
           }).then((_) {
-        isDissmisedBySystem = true;
-        if (onDissmissCallback != null) onDissmissCallback();
+        isDismissedBySystem = true;
+        if (onDismissCallback != null) onDismissCallback();
       });
 
   Widget get _buildHeader {
@@ -199,7 +245,7 @@ class AwesomeDialog {
           desc: this.desc,
           body: this.body,
           isDense: isDense,
-          aligment: aligment,
+          alignment: alignment,
           keyboardAware: keyboardAware,
           width: width,
           padding: padding ?? EdgeInsets.only(left: 5, right: 5),
@@ -207,15 +253,17 @@ class AwesomeDialog {
           btnCancel: btnCancel ??
               (btnCancelOnPress != null ? _buildFancyButtonCancel : null),
           showCloseIcon: this.showCloseIcon,
-          onClose: dissmiss,
+          onClose: dismiss,
           closeIcon: closeIcon,
+          noVerticalMargin: noVerticalMargin,
+          backgroundBorderRadius: backgroundBorderRadius,
         ),
       );
 
   Widget get _buildFancyButtonOk => AnimatedButton(
         isFixedHeight: false,
         pressEvent: () {
-          dissmiss();
+          dismiss();
           btnOkOnPress?.call();
         },
         text: btnOkText ?? 'Ok',
@@ -228,7 +276,7 @@ class AwesomeDialog {
   Widget get _buildFancyButtonCancel => AnimatedButton(
         isFixedHeight: false,
         pressEvent: () {
-          dissmiss();
+          dismiss();
           btnCancelOnPress?.call();
         },
         text: btnCancelText ?? 'Cancel',
@@ -238,8 +286,8 @@ class AwesomeDialog {
         buttonTextStyle: buttonsTextStyle,
       );
 
-  dissmiss() {
-    if (!isDissmisedBySystem)
+  dismiss() {
+    if (!isDismissedBySystem)
       Navigator.of(context, rootNavigator: useRootNavigator)?.pop();
   }
 
