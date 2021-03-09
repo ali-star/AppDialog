@@ -1,4 +1,4 @@
-library awesome_dialog;
+library flutter_dialog;
 
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ enum AnimType {
   SMOOTH_SCALE
 }
 
-class AwesomeDialog {
+class FlutterDialog {
   /// [@required]
   final BuildContext context;
 
@@ -122,7 +122,7 @@ class AwesomeDialog {
   /// Custom duration for dialog animation
   final Duration animDuration;
 
-  AwesomeDialog(
+  FlutterDialog(
       {@required this.context,
       this.dialogType = DialogType.INFO,
       this.customHeader,

@@ -1,8 +1,8 @@
-name: flutter_dialogs
+name: flutter_dialog
 description: >-
-  Flutter package to show beautiful dialogs with animations as simply as possible (from awesomeDialogs).
+  Flutter package to show beautiful dialogs with animations as simply as possible (from flutter).
 version: 1.3.2
-homepage: https://github.com/ali-star/FlutterDialogs
+homepage: https://github.com/ali-star/FlutterDialog
 
 environment:
   sdk: ">=2.3.0 <3.0.0"

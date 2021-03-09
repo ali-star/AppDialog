@@ -1,5 +1,5 @@
 ## [1.3.2] - 2/3/2021.
-* Added Property buttonsTextStyle, to AwesomeDialog to easy customize built in buttons.
+* Added Property buttonsTextStyle, to FlutterDialog to easy customize built in buttons.
 ## [1.3.1] - 13/1/2021.
 * Added Property buttonTextStyle, to AnimatedButton pr#56.
 * Added Property borderSide, to customize the edges of the dialog pr#55.
@@ -16,11 +16,11 @@
 ## [1.2.0] - 19/08/2020.
 * Added Property width to control the maximum width of the dialog, especially useful in web flutter, or landscape mode, by default it is MediaQuery.of(context).size.width.
 ## [1.1.3] - 27/06/2020.
-* Added Property dismissOnBackKeyPress to control if AwesomeDialog is dissmisable by back button
+* Added Property dismissOnBackKeyPress to control if FlutterDialog is dissmisable by back button
 ## [1.1.2] - 9/06/2020.
 * Added Property keyboardAware to control whenever or not add the Padding introducing on v1.1.1, and make it optional. Default value True.
 ## [1.1.1] - 9/06/2020.
-* Added Padding EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom) to AwesomeDialog to be aware of keyboard input
+* Added Padding EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom) to FlutterDialog to be aware of keyboard input
 ## [1.1.0] - 30/05/2020.
 * [Breaking Change in title Prop]
 * Meger Pull Request Fixed title prop and fixed some padding issues. #17, thanks to @iampawan.

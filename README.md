@@ -1,13 +1,13 @@
-# awesome_dialog
+# flutter_dialog
 
-A new Flutter package project for simple and awesome dialogs
+A new Flutter package project for simple and flutter dialogs
 
 ## Usage
 
-To use this package, add awesome_dialog as a dependency in your pubspec.yaml file.
+To use this package, add flutter_dialog as a dependency in your pubspec.yaml file.
 And add this import to your file.
 
-import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter_dialog/flutter_dialog.dart';
 
 ## Image
 ![alt text](doc/gif.gif)
@@ -15,7 +15,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 ### Example
 
 ```
-AwesomeDialog(
+FlutterDialog(
             context: context,
             dialogType: DialogType.INFO,
             animType: AnimType.BOTTOMSLIDE,
@@ -30,7 +30,7 @@ AwesomeDialog(
 If the body is specified, then title and description will be ignored, this allows to further customize the dialogue.
 
 ```
-AwesomeDialog(
+FlutterDialog(
             context: context,
             animType: AnimType.SCALE,
             dialogType: DialogType.INFO,
@@ -50,9 +50,9 @@ To use custom buttons, just specify the buttonOk or btnCancel widget, all text p
 
 ## Dissmiss and Callback
 
-AwesomeDialog has onDissmissCallback() and can be dissmissed at any time using dissmiss() public method.
+FluttweDialog has onDissmissCallback() and can be dissmissed at any time using dissmiss() public method.
 
-### AwesomeDialog Class
+### FlutterDialog Class
 
 | Dart attribute        | Datatype             | Description                                                                                                                                                   |             Default Value              |
 |:----------------------|:---------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------:|
@@ -83,7 +83,7 @@ AwesomeDialog has onDissmissCallback() and can be dissmissed at any time using d
 | padding               | EdgeInsetsGeometry   | The padding of dialog elemets                                                                                                                                 |  EdgeInsets.only(left: 5, right: 5),   |
 | autoHide              | Duration             | Hide the Dialog after this Duration                                                                                                                           |                  null                  |
 | keyboardAware         | bool                 | Control if add or not the Padding EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom).                                                          |                  true                  |
-| dismissOnBackKeyPress | bool                 | control if AwesomeDialog is dissmisable by back button.                                                                                                       |                  true                  |
+| dismissOnBackKeyPress | bool                 | control if FlutterDialog is dissmisable by back button.                                                                                                       |                  true                  |
 | buttonsBorderRadius | BorderRadiusGeometry                 | Border Radius for built in buttons.                                                                                       |                  BorderRadius.all(Radius.circular(100)                  |
 | buttonsTextStyle | TextStyle                 | TextStyle for built in buttons.                                                                                       |                  TextStyle(color: Colors.white, fontWeight:FontWeight.w700, fontSize: 14)                 |
 | showCloseIcon | bool                 | Control if close icon is appear.                                                     |                  false                  |

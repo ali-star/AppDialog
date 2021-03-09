@@ -1,6 +1,6 @@
-# awesome_dialog_example
+# flutter_dialog
 
-AwesomeDialogLibExample
+FlutterDialogLibExample
 
 ## Getting Started
 

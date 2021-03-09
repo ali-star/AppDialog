@@ -1,4 +1,4 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter_dialog/flutter_dialog.dart';
 import 'package:flutter/material.dart';
 
 import 'routes.dart';
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Awesome Dialog Example'),
+          title: Text('Flutter Dialog Example'),
         ),
         body: Center(
             child: Container(
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                 AnimatedButton(
                   text: 'Info Dialog fixed width and sqare buttons',
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                       context: context,
                       borderSide: BorderSide(color: Colors.green, width: 2),
                       width: 280,
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                 AnimatedButton(
                   text: 'Question Dialog With Custom BTN Style',
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                       context: context,
                       dialogType: DialogType.QUESTION,
                       headerAnimationLoop: false,
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                 AnimatedButton(
                   text: 'Info Dialog Without buttons',
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                       context: context,
                       headerAnimationLoop: true,
                       animType: AnimType.BOTTOM_SLIDE,
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                   text: 'Warning Dialog',
                   color: Colors.orange,
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                         context: context,
                         dialogType: DialogType.WARNING,
                         headerAnimationLoop: false,
@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                   text: 'Error Dialog',
                   color: Colors.red,
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                         context: context,
                         dialogType: DialogType.ERROR,
                         animType: AnimType.RIGHT_SLIDE,
@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                   text: 'Succes Dialog',
                   color: Colors.green,
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                         context: context,
                         animType: AnimType.LEFT_SLIDE,
                         headerAnimationLoop: false,
@@ -168,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                   text: 'No Header Dialog',
                   color: Colors.cyan,
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                       context: context,
                       headerAnimationLoop: false,
                       dialogType: DialogType.NO_HEADER,
@@ -189,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                   text: 'Custom Body Dialog',
                   color: Colors.blueGrey,
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                       context: context,
                       animType: AnimType.SCALE,
                       dialogType: DialogType.INFO,
@@ -211,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                   text: 'No Vertical Margin Dialog',
                   color: Colors.blue,
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                       context: context,
                       animType: AnimType.SMOOTH_SCALE,
                       animDuration: Duration(milliseconds: 270),
@@ -258,7 +258,7 @@ class _HomePageState extends State<HomePage> {
                   text: 'Auto Hide Dialog',
                   color: Colors.purple,
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                       context: context,
                       dialogType: DialogType.INFO,
                       animType: AnimType.SCALE,
@@ -275,7 +275,7 @@ class _HomePageState extends State<HomePage> {
                   text: 'Testing Dialog',
                   color: Colors.orange,
                   pressEvent: () {
-                    AwesomeDialog(
+                    FlutterDialog(
                       context: context,
                       keyboardAware: true,
                       dismissOnBackKeyPress: false,
@@ -299,8 +299,8 @@ class _HomePageState extends State<HomePage> {
                   text: 'Body with Input',
                   color: Colors.blueGrey,
                   pressEvent: () {
-                    AwesomeDialog dialog;
-                    dialog = AwesomeDialog(
+                    FlutterDialog dialog;
+                    dialog = FlutterDialog(
                       context: context,
                       animType: AnimType.SCALE,
                       dialogType: DialogType.INFO,
