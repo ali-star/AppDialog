@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_dialog:
+  app_dialog:
     path: ../
   cupertino_icons: ^0.1.3
 

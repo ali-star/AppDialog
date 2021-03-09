@@ -1,6 +1,6 @@
-# flutter_dialog
+# app_dialog
 
-FlutterDialogLibExample
+AppDialogLibExample
 
 ## Getting Started
 

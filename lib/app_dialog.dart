@@ -1,4 +1,4 @@
-library flutter_dialog;
+library app_dialog;
 
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ enum AnimType {
   SMOOTH_SCALE
 }
 
-class FlutterDialog {
+class AppDialog {
   /// [@required]
   final BuildContext context;
 
@@ -122,7 +122,7 @@ class FlutterDialog {
   /// Custom duration for dialog animation
   final Duration animDuration;
 
-  FlutterDialog(
+  AppDialog(
       {@required this.context,
       this.dialogType = DialogType.INFO,
       this.customHeader,

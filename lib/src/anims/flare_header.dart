@@ -1,4 +1,4 @@
-import 'package:flutter_dialog/flutter_dialog.dart';
+import 'package:app_dialog/app_dialog.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class FlareHeader extends StatelessWidget {
     switch (dialogType) {
       case DialogType.INFO:
         return FlareActor(
-          "packages/flutter_dialog/assets/flare/info2.flr",
+          "packages/app_dialog/assets/flare/info2.flr",
           alignment: Alignment.center,
           fit: BoxFit.cover,
           animation: loop ? 'appear_loop' : 'appear',
@@ -22,7 +22,7 @@ class FlareHeader extends StatelessWidget {
         break;
       case DialogType.QUESTION:
         return FlareActor(
-          "packages/flutter_dialog/assets/flare/question.flr",
+          "packages/app_dialog/assets/flare/question.flr",
           alignment: Alignment.center,
           fit: BoxFit.cover,
           animation: loop ? 'anim_loop' : 'anim',
@@ -32,8 +32,8 @@ class FlareHeader extends StatelessWidget {
       case DialogType.WARNING:
         return FlareActor(
           loop
-              ? "packages/flutter_dialog/assets/flare/warning.flr"
-              : "packages/flutter_dialog/assets/flare/warning_without_loop.flr",
+              ? "packages/app_dialog/assets/flare/warning.flr"
+              : "packages/app_dialog/assets/flare/warning_without_loop.flr",
           alignment: Alignment.center,
           fit: BoxFit.cover,
           animation: 'appear',
@@ -42,8 +42,8 @@ class FlareHeader extends StatelessWidget {
       case DialogType.ERROR:
         return FlareActor(
           loop
-              ? "packages/flutter_dialog/assets/flare/error.flr"
-              : "packages/flutter_dialog/assets/flare/error_without_loop.flr",
+              ? "packages/app_dialog/assets/flare/error.flr"
+              : "packages/app_dialog/assets/flare/error_without_loop.flr",
           alignment: Alignment.center,
           fit: BoxFit.fill,
           animation: 'Error',
@@ -52,8 +52,8 @@ class FlareHeader extends StatelessWidget {
       case DialogType.SUCCESS:
         return FlareActor(
           loop
-              ? "packages/flutter_dialog/assets/flare/succes.flr"
-              : "packages/flutter_dialog/assets/flare/succes_without_loop.flr",
+              ? "packages/app_dialog/assets/flare/succes.flr"
+              : "packages/app_dialog/assets/flare/succes_without_loop.flr",
           alignment: Alignment.center,
           fit: BoxFit.fill,
           animation: 'Untitled',
@@ -62,8 +62,8 @@ class FlareHeader extends StatelessWidget {
       default:
         return FlareActor(
           loop
-              ? "packages/flutter_dialog/assets/flare/info.flr"
-              : "packages/flutter_dialog/assets/flare/info_without_loop.flr",
+              ? "packages/app_dialog/assets/flare/info.flr"
+              : "packages/app_dialog/assets/flare/info_without_loop.flr",
           alignment: Alignment.center,
           fit: BoxFit.cover,
           animation: 'appear',
