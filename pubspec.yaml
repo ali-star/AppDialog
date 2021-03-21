@@ -1,17 +1,17 @@
 name: app_dialog
 description: >-
   Flutter package to show beautiful dialogs with animations as simply as possible (from awesomeDialogs).
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/ali-star/AppDialog
 
 environment:
-  sdk: ">=2.3.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  simple_animations: ^2.5.1
-  flare_flutter: ^2.0.6
+  simple_animations: ^3.0.3
+  flare_flutter: 3.0.0-nullsafety.1
 
 dev_dependencies:
   flutter_test:

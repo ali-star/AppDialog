@@ -30,40 +30,40 @@ class AppDialog {
   final DialogType dialogType;
 
   /// Widget with priority over DialogType, for a custom header widget
-  final Widget customHeader;
+  final Widget? customHeader;
 
   /// Dialog Title
-  final String title;
+  final String? title;
 
   /// Set the description text of the dialog.
-  final String desc;
+  final String? desc;
 
   /// Create your own Widget for body, if this property is set title and description will be ignored.
-  final Widget body;
+  final Widget? body;
 
   /// Btn OK props
-  final String btnOkText;
-  final IconData btnOkIcon;
-  final Function btnOkOnPress;
-  final Color btnOkColor;
+  final String? btnOkText;
+  final IconData? btnOkIcon;
+  final Function? btnOkOnPress;
+  final Color? btnOkColor;
 
   /// Btn Cancel props
-  final String btnCancelText;
-  final IconData btnCancelIcon;
-  final Function btnCancelOnPress;
-  final Color btnCancelColor;
+  final String? btnCancelText;
+  final IconData? btnCancelIcon;
+  final Function? btnCancelOnPress;
+  final Color? btnCancelColor;
 
   /// Custom Btn OK
-  final Widget btnOk;
+  final Widget? btnOk;
 
   /// Custom Btn Cancel
-  final Widget btnCancel;
+  final Widget? btnCancel;
 
   /// Barrier Dismissible
   final bool dismissOnTouchOutside;
 
   /// Callback to execute after dialog get dismissed
-  final Function onDismissCallback;
+  final Function? onDismissCallback;
 
   /// Anim Type can be { SCALE, LEFT_SLIDE, RIGHT_SLIDE, BOTTOM_SLIDE, TOP_SLIDE, SMOOTH_SCALE }
   final AnimType animType;
@@ -72,7 +72,7 @@ class AppDialog {
   final AlignmentGeometry alignment;
 
   /// Padding off inner content of Dialog
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// This Prop is useful to Take advantage of screen dimensions
   final bool isDense;
@@ -84,7 +84,7 @@ class AppDialog {
   final bool useRootNavigator;
 
   /// For Auto Hide Dialog after some Duration.
-  final Duration autoHide;
+  final Duration? autoHide;
 
   ///Control if add or not the Padding EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom).
   final bool keyboardAware;
@@ -93,37 +93,37 @@ class AppDialog {
   final bool dismissOnBackKeyPress;
 
   ///Max with of entire Dialog.
-  final double width;
+  final double? width;
 
   ///Border Radius for built in buttons.
-  final BorderRadiusGeometry buttonsBorderRadius;
+  final BorderRadiusGeometry? buttonsBorderRadius;
 
   ///TextStyle for built in buttons.
-  final TextStyle buttonsTextStyle;
+  final TextStyle? buttonsTextStyle;
 
   /// Control if close icon is appear.
   final bool showCloseIcon;
 
   /// Custom closeIcon.
-  final Widget closeIcon;
+  final Widget? closeIcon;
 
   /// Custom background color for dialog + header
-  final Color dialogBackgroundColor;
+  final Color? dialogBackgroundColor;
 
   /// Set BorderSide of DialogShape
-  final BorderSide borderSide;
+  final BorderSide? borderSide;
 
   /// Set zero margin of dialog if true
   final bool noVerticalMargin;
 
   /// Changes the BorderRadius of the dialog background
-  final BorderRadius backgroundBorderRadius;
+  final BorderRadius? backgroundBorderRadius;
 
   /// Custom duration for dialog animation
-  final Duration animDuration;
+  final Duration? animDuration;
 
   AppDialog(
-      {@required this.context,
+      {required this.context,
       this.dialogType = DialogType.INFO,
       this.customHeader,
       this.title,
@@ -171,7 +171,7 @@ class AppDialog {
           barrierDismissible: dismissOnTouchOutside,
           builder: (BuildContext context) {
             if (autoHide != null) {
-              Future.delayed(autoHide).then((value) => dismiss());
+              Future.delayed(autoHide!).then((value) => dismiss());
             }
             switch (animType) {
               case AnimType.SCALE:
@@ -223,11 +223,11 @@ class AppDialog {
             }
           }).then((_) {
         isDismissedBySystem = true;
-        if (onDismissCallback != null) onDismissCallback();
+        if (onDismissCallback != null) onDismissCallback!();
       });
 
-  Widget get _buildHeader {
-    if (customHeader != null) return customHeader;
+  Widget? get _buildHeader {
+    if (customHeader != null) return customHeader!;
     if (dialogType == DialogType.NO_HEADER) return null;
     return FlareHeader(
       loop: headerAnimationLoop,
@@ -288,7 +288,7 @@ class AppDialog {
 
   dismiss() {
     if (!isDismissedBySystem)
-      Navigator.of(context, rootNavigator: useRootNavigator)?.pop();
+      Navigator.of(context, rootNavigator: useRootNavigator).pop();
   }
 
   Future<bool> _onWillPop() async => dismissOnBackKeyPress;

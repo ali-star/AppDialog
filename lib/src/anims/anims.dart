@@ -4,20 +4,16 @@ import 'package:simple_animations/simple_animations.dart';
 //Helper Enum Class
 enum SlideFrom { TOP, BOTTOM, LEFT, RIGHT }
 
-Offset getOffset(MultiTweenValues<AniProps> animation, SlideFrom from) {
+Offset getOffset(MultiTweenValues<AniProps> animation, SlideFrom? from) {
   switch (from) {
     case SlideFrom.TOP:
       return Offset(0, -animation.get(AniProps.translateX));
-      break;
     case SlideFrom.BOTTOM:
       return Offset(0, animation.get(AniProps.translateX));
-      break;
     case SlideFrom.LEFT:
       return Offset(-animation.get(AniProps.translateX), 0);
-      break;
     case SlideFrom.RIGHT:
       return Offset(animation.get(AniProps.translateX), 0);
-      break;
     default:
       return Offset(0, 0);
   }
@@ -28,10 +24,10 @@ enum AniProps { opacity, translateX, scale }
 
 class FadeIn extends StatelessWidget {
   final double delay;
-  final Duration duration;
-  final Widget child;
+  final Duration? duration;
+  final Widget? child;
   final CustomAnimationControl control;
-  final SlideFrom from;
+  final SlideFrom? from;
   final bool fade;
   final Curve curve;
 
@@ -70,9 +66,9 @@ class FadeIn extends StatelessWidget {
 }
 
 class Slide extends StatelessWidget {
-  final Duration delay;
-  final Duration duration;
-  final Widget child;
+  final Duration? delay;
+  final Duration? duration;
+  final Widget? child;
   final CustomAnimationControl control;
   final SlideFrom from;
   final double slideDistance;
@@ -111,10 +107,10 @@ class Slide extends StatelessWidget {
 }
 
 class ScaleFade extends StatelessWidget {
-  final Duration delay;
-  final Widget child;
+  final Duration? delay;
+  final Widget? child;
   final CustomAnimationControl control;
-  final Duration duration;
+  final Duration? duration;
   final bool fade;
   final double scale;
   final Curve curve;
@@ -160,8 +156,8 @@ class ScaleFade extends StatelessWidget {
 
 class ShowHide extends StatelessWidget {
   final double delay;
-  final Widget child;
-  final Duration duration;
+  final Widget? child;
+  final Duration? duration;
   final bool isShow;
 
   ShowHide({

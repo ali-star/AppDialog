@@ -1,42 +1,43 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class VerticalStackDialog extends StatelessWidget {
-  final String title;
-  final String desc;
-  final Widget btnOk;
-  final Widget btnCancel;
-  final Widget header;
-  final Widget body;
+  final String? title;
+  final String? desc;
+  final Widget? btnOk;
+  final Widget? btnCancel;
+  final Widget? header;
+  final Widget? body;
   final bool isDense;
-  final AlignmentGeometry alignment;
-  final EdgeInsetsGeometry padding;
+  final AlignmentGeometry? alignment;
+  final EdgeInsetsGeometry? padding;
   final bool keyboardAware;
-  final double width;
+  final double? width;
   final bool showCloseIcon;
   final Function onClose;
-  final Widget closeIcon;
-  final Color dialogBackgroundColor;
-  final BorderSide borderSide;
+  final Widget? closeIcon;
+  final Color? dialogBackgroundColor;
+  final BorderSide? borderSide;
   final bool noVerticalMargin;
-  final BorderRadius backgroundBorderRadius;
+  final BorderRadius? backgroundBorderRadius;
 
   const VerticalStackDialog({
-    Key key,
-    @required this.title,
-    @required this.desc,
+    Key? key,
+    required this.title,
+    required this.desc,
     this.btnOk,
     this.btnCancel,
     this.body,
     this.alignment,
-    this.isDense,
-    @required this.header,
+    this.isDense = false,
+    required this.header,
     this.padding,
-    this.keyboardAware,
+    this.keyboardAware = false,
     this.width,
-    this.showCloseIcon,
-    @required this.onClose,
+    this.showCloseIcon = false,
+    required this.onClose,
     this.closeIcon,
-    this.dialogBackgroundColor,
+    this.dialogBackgroundColor = Colors.transparent,
     this.borderSide,
     this.noVerticalMargin = false,
     this.backgroundBorderRadius
@@ -65,7 +66,7 @@ class VerticalStackDialog extends StatelessWidget {
               elevation: 0.5,
               color: dialogBackgroundColor ?? Theme.of(context).cardColor,
               child: Padding(
-                padding: padding,
+                padding: padding ?? EdgeInsets.zero,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,7 +80,7 @@ class VerticalStackDialog extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
                               Text(
-                                title,
+                                title ?? '',
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context).textTheme.headline6,
                               ),
@@ -91,7 +92,7 @@ class VerticalStackDialog extends StatelessWidget {
                                 child: SingleChildScrollView(
                                   physics: BouncingScrollPhysics(),
                                   child: Text(
-                                    desc,
+                                    desc ?? '',
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
@@ -118,7 +119,7 @@ class VerticalStackDialog extends StatelessWidget {
                                 ),
                               if (btnOk != null)
                                 Expanded(
-                                  child: btnOk,
+                                  child: btnOk!,
                                 )
                             ],
                           ),
@@ -155,7 +156,7 @@ class VerticalStackDialog extends StatelessWidget {
               top: 75.0,
               child: GestureDetector(
                 onTap: () {
-                  onClose?.call();
+                  onClose.call();
                 },
                 child: closeIcon ?? Icon(Icons.close),
               ),
